@@ -1,0 +1,547 @@
+/* Styling for register and login forms */
+
+.login-body {
+    position: relative;
+    background-color: #f0f0f0;
+    min-height: 91.5vh;
+}
+
+.error-message {
+    position: relative;
+    padding: 13px;
+}
+
+.error-message p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.close-message {
+    position: absolute;
+    display: block !important;
+    right: 10px;
+    top: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.form-div {
+    position: absolute;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 4px 15px #000;
+    padding: 15px 20px;
+}
+
+.form-div h3 {
+    text-align: center;
+}
+
+.form-group {
+    margin-top: 30px;
+}
+
+.submit {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.submit .btn {
+    width: 250px;
+    background-color: #000;
+    color: #fff;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  color: #fff !important;
+  font-size: 1.1rem;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control-search {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.cat-nav-link {
+  margin-bottom: 10px;
+  color: #fff !important;
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.navbar {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+a.active {
+  color: rgb(206, 22, 22) !important;
+}
+
+#sidebarMenu{
+    background-color: #000 !important;
+}
+
+.category-list {
+    list-style-type: none;
+    display: none;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #ccc !important;
+}
+
+/* useful stylings */
+
+.show-category-list {
+    display: block !important;
+}
+
+.show-comment-list {
+  display: block !important;
+}
+
+.down, .down1 {
+    display: none;
+}
+
+.show {
+  display: inline;
+}
+
+.hide {
+  display: none;
+}
+
+.notfound {
+  font-size: 1.2rem;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* stlyling for index page and listing cards */
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-content: center;
+    column-gap: 1.5rem;
+}
+
+.card {
+    border-radius: 15px !important;
+    margin-bottom: 20px;
+}
+
+.listing-link {
+    display: block;
+    color: #000;
+}
+
+.listing-link:hover{
+    text-decoration: none !important;
+    color: #000;
+}
+
+.listing img{
+    width: 90%;
+    height: 450px;
+    display: block;
+}
+
+article img {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body h5{
+    text-align: center;
+}
+
+.listing-page-main {
+    background-color: #fff;
+}
+
+.card-body button {
+    display: block;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding: .3rem .7rem;
+    background-color: rgb(0, 0, 0) !important;
+    color: #fff;
+    width: 100%;
+}
+
+/* Styling for watchlist */
+.watchlist {
+  width: 100%;
+}
+
+.watchlist-img {
+  border-radius: 15px;
+}
+
+.watch-button {
+  display: flex;
+}
+
+.watch-button a {
+  margin-right: 30px;
+}
+
+/* Styling for listing page */
+
+.title {
+  font-weight: normal;
+}
+
+.desc {
+  font-size: 1.25rem;
+}
+
+.desc p:nth-child(2) {
+  font-weight: 900;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  outline: none !important;
+  border: none !important;
+}
+
+.fashion {
+  background: rgb(237, 89, 89);
+}
+
+.men {
+  background: rgb(66, 66, 252);
+}
+
+.women {
+  background: plum;
+}
+
+.children {
+  background: pink;
+}
+
+.electronics {
+  background: grey;
+}
+
+.hair {
+  background: honeydew;
+}
+
+.toys {
+  background: turquoise;
+}
+
+.furniture {
+  background: brown;
+}
+
+.shoes {
+  background: coral;
+}
+
+.clothing {
+  background: cornflowerblue;
+}
+
+.watches {
+  background: gold;
+}
+
+.bid-form {
+  margin-bottom: 20px;
+}
+
+/* Styling of comment section of listing page */
+
+textarea {
+  display: block !important;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+}
+
+.comment-list {
+  display: none;
+}
+
+.comment-list li h5 {
+  margin-bottom: 5px;
+}
+
+.comment-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-form label {
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.comment {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  background-color: black;
+  color: #fff;
+}
+
+/* Styling for the create listing page */
+
+.create-form-div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  background-color: white;
+  padding: 25px;
+}
+
+label {
+  font-weight: 700;
+}
+
+.inputs {
+  display: block !important;
+  margin-bottom: 20px;
+  width: 98%;
+  padding: 8px 12px;
+  border: 0.5px solid #ccc !important;
+}
+
+.cat-checkbox-div ul {
+  padding-left: 0;
+}
+
+.cat-input label input{
+  margin-bottom: 0 !important;
+}
+
+.cat-checkbox-div {
+  padding-left: 12px;
+  padding-right: 10px;
+}
+
+.create-btn-div {
+  margin-top: 20px;;
+  text-align: center;
+}
+
+.create-btn-div input {
+  width: 70%;
+  background-color: #000;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#dropdownMenuButton {
+  border: 1px solid #000 !important;
+} 
+
+/* Styling fo the category page */
+
+.category-lists {
+  display: flex;
+  justify-content: center;
+  padding-left: 0 !important;
+  flex-wrap: wrap;
+}
+
+.category-lists li {
+  position: relative;
+  margin-bottom: 18px;
+  margin-right: 18px;
+  margin-left: 18px;
+}
+
+.category-lists li img {
+  border-radius: 7px;
+  width: 200px;
+  height: 150px;
+}
+
+.overlay {
+  position: absolute;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.overlay:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.category-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.category-title a {
+  color: white;
+}
+
+@media (max-width: 1080px) {
+  .watchlist-img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 991px)  {
+  .listing img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.title, .won {
+  text-align: center;
+}
+}
+
+@media (max-width: 535px) {
+  .form-div {
+    width: 97.5%;
+  }
+} 
+
+@media (min-width: 338px) and (max-width: 535px) {
+  .category-lists li {
+    position: relative;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  
+  .category-lists li img {
+    border-radius: 7px;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 280px) {
+  html {
+    font-size: 11px;
+  }
+}
+

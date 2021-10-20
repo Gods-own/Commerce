@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="{% static 'auctions/images/logo.png' %}" width="50px" height="50px"> Auctions</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid login-body">
+        <div class="form-div">
+            <h3>Login to Auctions</h3>
+
+            {% if message %}
+                <div class="error-message bg-danger">
+                    <button class="close-message">X</button>
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="submit">
+                    <button class="btn" type="submit">Login</button>
+                </div>
+            </form>
+            Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+        </div>
+        <small>Attribution: <a href="https://pngtree.com/freepng/abstract-shape-mandala-round-frame_4888642.html">Logo</a> from PNG Tree</small>
+    </div>
+
+    {% if message %}
+    {% block script %}
+    <script>
+        document.querySelector('.close-message').addEventListener('click', function() {
+            document.querySelector('.error-message').style.display = 'none';
+        })
+    </script>
+   {% endblock %}
+    {% endif %}
+
+{% endblock %}

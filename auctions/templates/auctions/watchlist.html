@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+{% load curr_extra %}
+{% load static %}
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="pt-4">
+
+    <div>
+        {% for watch in watchs %}
+            
+            <article class="wachlist mb-4">
+                <div class="row">
+                    <div class="col-sm-4 col-5"> <img class="watchlist-img" src="{{watch.watch_product.product}}"></div>
+                    <div class="col-sm-8 col-7">
+                        <h5>{{watch.watch_product.title}}</h5>
+                        <p>{{watch.watch_product.description}}</p>
+                        <p><b>{{watch.watch_product.price|curr}}</b></p>
+                        <div class="watch-button">
+                            <a href="{% url 'page' watch.watch_product.id %}"><button class="btn btn-primary">View</button></a>
+                        <form method="post" action="{% url 'remove_watch' watch.watch_product.id %}">
+                            {% csrf_token %}
+                            <input class="btn btn-danger"  type="submit" name="remove" value="Remove">
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </div>
+    </main>     
+{% endblock %}
+

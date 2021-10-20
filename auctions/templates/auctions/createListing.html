@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="pt-4">
+
+       <div class="create-form-div">
+
+            <form method="post" action="{% url 'listing' %}">
+                <div>
+                    {% csrf_token %}
+                    {{form1}}
+                <div class="dropright">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </button>
+                    <div class="dropdown-menu cat-checkbox-div" aria-labelledby="dropdownMenuButton">
+                    {{form2}}
+                    </div>
+                </div>
+                    <div class="create-btn-div">
+                        <input type="submit" value="Create">
+                    </div>
+                </div>
+            </form>
+            
+       </div>
+
+    </div>
+    </main>      
+{% endblock %}

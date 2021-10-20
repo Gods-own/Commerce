@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+{% load curr_extra %}
+{% load static %}
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="pt-4">
+
+    <section>
+        {% for auction in auctions %}
+            <article class="card">
+                <a class="listing-link" href="{% url 'page' auction.id %}">
+                <img src="{{auction.product}}">
+                <div class="card-body">
+                    <h5 class="title">{{auction.title}}</h5>
+                <p>{{auction.description|truncatewords:5}}</p>
+                <p><b>{{auction.price|curr}}</b></p>
+                </div>
+                </a>
+            </article>
+        {% endfor %}
+        </section>
+        
+    </div>
+    </main>      
+{% endblock %}
+

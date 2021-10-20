@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+{% load curr_extra %}
+
+
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="pt-4">
+
+    <section>
+        {% for product in products %}
+            <article class="card">
+                <a class="listing-link" href="{% url 'page' product.id %}">
+                <img src="{{product.product}}">
+                <div class="card-body">
+                    <h5 class="title">{{product.title}}</h5>
+                <!-- <picture>
+                    <source srcset="{{auction.product}}">
+                    <source srcset="{{auction.product}}">
+                    <img src="{{auction.product}}">
+                </picture> -->
+                <p>{{product.description|truncatewords:6}}</p>
+                <p><b>Price: {{product.price|curr}}</b></p>
+                <!-- <p>Listed by {{auction.seller}}</p> -->
+                <!-- <p>{{auction.date_created}}</p> -->
+                </div>
+                </a>
+            </article>
+        {% endfor %}
+        </section>
+    </div>
+    </main>     
+{% endblock %}

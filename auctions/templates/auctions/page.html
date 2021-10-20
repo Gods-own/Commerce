@@ -1,0 +1,127 @@
+{% extends "auctions/layout.html" %}
+{% load curr_extra %}
+{% load static %}
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 listing-page-main">
+    <div class="row pt-4">
+
+        <div class="col-lg-7 col-12 listing">
+            <img src="{{auction.product}}">
+        </div>
+        <div class="col-lg-5 col-12 pt-lg-0 pt-3">
+
+            <!-- if the listing is closed show and highest bidder goes to the listing page, show this div -->
+            {% if auction.is_closed == True and winner|stringformat:"s" == user.username %}
+            <div class="bg-success p-1"><h3 class="won text-center">Congratulations! You won</h3></div>
+            <!-- else if anyother use apart from the winner goes to the listing page show this div -->
+            {% elif auction.is_closed == True %}
+            <div class="bg-danger p-1"> <h3 class="won text-center">This listing is closed!</h3></div>
+            {% endif %}
+
+            <h3 class="title">{{auction.title}}</h3>
+            <p class="desc">{{auction.description}}</p>
+            <p class="desc"><b>{{auction.price|curr}}</b></p>
+            <p><b>LISTED BY:</b> {{auction.seller}}</p>
+            <p>
+                <b>CATEGORY:</b>
+                {% for catego in auction.Auc_Cat.all %}
+                <button class="{{catego|slugify}}">{{catego}}</button>
+                {% endfor %}
+            </p>
+            <p><b>CREATED:</b> {{auction.date_created}}</p>
+
+            <!-- if listing is not closed do the following -->
+            {% if auction.is_closed == False %}
+
+            <!-- Show closed button if the user that created the listing goes to the listing's page -->
+            {% if user.username == auction.seller|stringformat:"s" %}
+            <form method="post" action="{% url 'page' auction.id %}">
+                {% csrf_token %}
+                <input class="list-page-btn btn btn-danger" type="submit" name="close" value="Close">
+            </form>
+
+            <!-- else show the bid form to other users other than the creator of the listing -->
+            {% else %}
+
+            <!-- Error messages -->
+            {% if messages %}
+            {% for message in messages %}
+            <div class="error-message bg-danger">
+                <button class="close-message">X</button>
+                <p>{{message}}</p>
+            </div>
+            {% endfor %} 
+            {% endif %}
+
+            <small>{{number}} bids so far. 
+                {% if winner|stringformat:"s" == user.username %}
+                    Your bid is the current bid
+                {% endif %}
+            </small>
+            <form class="bid-form" method="post" action="{% url 'page' auction.id %}">
+                {% csrf_token %}
+                {{form}}
+                <input class="list-page-btn btn btn-dark"  type="submit" name="place" value="Place Bid">
+            </form>
+
+            <!-- Watchlist action buttons -->
+            <form method="post" action="{% url 'page' auction.id %}">
+                {% csrf_token %}
+                <!-- if user already has this listing on it's watchlist page, show remove from watchlist button -->
+                {% if result == True %}
+                    <input class="list-page-btn btn btn-danger"  type="submit" name="remove" value="Remove from watchlist">
+                <!-- else show add to watchlist button     -->
+                {% else %}
+                    <input class="list-page-btn btn btn-success"  type="submit" name="add" value="Add to watchlist">
+                {% endif %}
+            </form>
+            {% endif %}
+        </div>
+
+    </div>
+    <hr>
+    <h4 class="comment-control"><i class="las la-angle-right right1"></i><i class="las la-angle-down down1"></i> Comments</h4>
+    <ul class="comment-list">
+    {% for comment in comments %}
+        <li>
+            <h5>{{comment.user}}</h5>
+            <small>{{comment.timestamp}}</small>
+            <p>{{comment.comment}}</p>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <!-- Any other user apart from the creator of the listing can comment on the listing page -->
+    {% if not user.username == auction.seller|stringformat:"s" %}
+    <form class="comment-form" method="post" action="{% url 'page' auction.id %}">
+        {% csrf_token %}
+        {{form2}}
+        <input class="comment btn" type="submit" name="comment" value="Comment">
+    </form>
+    {% endif %}
+    {% endif %}    
+</main>
+{% endblock %}
+
+{% block addscript %}
+    <script>
+        document.querySelector('.comment-control').addEventListener('click', function () {
+            document.querySelector('.comment-list').classList.toggle('show-comment-list')
+            document.querySelector('.right1').classList.toggle('hide')
+            document.querySelector('.down1').classList.toggle('show')
+        })
+    </script>
+      {% if messages %}
+      {% for message in messages %}
+      <script>
+          document.querySelectorAll('.close-message').forEach(function(message) {
+             message.addEventListener('click', function() {
+              document.querySelector('.error-message').style.display = 'none';
+          })
+          })
+      </script>
+      {% endfor %}
+     {% endif %}
+  
+{% endblock %}

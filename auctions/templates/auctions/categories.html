@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="pt-4">
+
+        <h4 class="mb-3 text-center">Categories</h4>
+        {% if check == "nothing" %}
+        <div><h5 class="text-center">No listings in this category</h5></div>
+        {% else %}
+        <ul class="category-lists">
+            {% for category in categories %}
+                <li>
+                    <div class="overlay">
+                        <h5 class="category-title"><a href="{% url 'getCategory' category %}">{{category}}</a></h5>
+                    </div>
+                    {% if category == "Fashion" %}
+                    <img src="https://ae01.alicdn.com/kf/H1f9cc5222a99499f8ba16bef86bfc9e9i/Maycaur-Funny-Wine-Glass-Printed-T-Shirt-Women-Christmas-Pattern-O-neck-Short-Sleeve-T-shirt.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Men" %}
+                    <img src="https://ae01.alicdn.com/kf/He74d488200a2465ca301c9b42d949a8dp/New-vegan-t-shirt-Men-2021-Spring-Summer-2021-Cotton-short-sleeve-t-shirt-Men-Brand.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Electronics" %}
+                    <img src="https://ae01.alicdn.com/kf/Hfee21e25cc2345348f61a01cdd75b02bs/Telescopic-Foldable-Usb-Fan-Cooler-Freestanding-Pedestal-Cooling-Fan-Cooler-With-Remote-Control-Electonic-Gadgets-514.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Toys" %}
+                    <img src="https://ae01.alicdn.com/kf/HTB1yibPagDD8KJjy0Fdq6AjvXXau/Mini-Electronic-Multifunctional-37-Keys-Electone-Keyboard-Musical-Toys-with-Microphone-Educational-Toys-for-Children-Beginners.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Women" %}
+                    <img src="https://ae01.alicdn.com/kf/Hbd13d0b4d0f942f5aaaefe6be4824d63F/Oversized-T-shirt-Vintage-Skeleton-Print-Tshirt-Summer-Clothes-Diary-Punk-Bone-Shirt-Women-Tops-Park.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Children" %}
+                    <img src="https://ae01.alicdn.com/kf/H077befa0767b4da19a425806d9be4695n/2020-Autumn-Winter-Children-Boots-Boys-Girls-Leather-Martin-Boots-Plush-Fashion-Waterproof-Non-slip-Warm.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Furniture" %}
+                    <img src="https://ae01.alicdn.com/kf/H61049157e355478981050b951b37176ce/UFANSM-Retro-Simple-Solid-Wooden-Dining-Chairs-Classic-Design-Nordic-Room-Furniture-Home-Decoration.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Shoes" %}
+                    <img src="https://ae01.alicdn.com/kf/H37e7819d4a4c4899968717bbb16703e0w/Men-Shoes-Couples-Winter-Sneakers-Plus-Size-47-Leather-Men-Casual-Shoes-Keep-Warm-Winter-Footwear.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Watches" %}
+                    <img src="https://ae01.alicdn.com/kf/Hdbefccbb27a748aca73268d21e4518d4v/5pcs-Set-Watches-Women-Fashion-Square-Green-Dial-Leather-Ladies-Bracelet-Watches-Set-Quartz-Wrist-Watch.jpg_220x220xz.jpg_.webp">
+                    {% elif category == "Clothing" %}
+                    <img src="https://ae01.alicdn.com/kf/H00285189661549dd8f1d6d2bf8487a549/Disney-Cartoon-2-8y-Family-Pyjamas-For-Children-Boy-Home-Clothes-Set-Infantil-Girls-Cute-Sleepwear.jpg_220x220xz.jpg_.webp">
+                    {% else %}
+                    <img src="https://ae01.alicdn.com/kf/H5db6a6fd950e40f1b3bc96599e761405o/1PC-Korean-Solid-Large-Hair-Claws-Elegant-Acrylic-Hairpins-Barrette-Crab-Hair-Clips-Headwear-for-Women.jpg_220x220xz.jpg_.webp">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </main>      
+{% endblock %}
